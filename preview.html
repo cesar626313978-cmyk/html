@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Preview</title>
+  <style>
+    html,body{height:100%;margin:0}
+    #app{height:100%}
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script>
+    // Recibe HTML vía postMessage y lo escribe en el documento del iframe
+    window.addEventListener('message', e => {
+      if (!e.data || e.data.type !== 'setHTML') return;
+      try {
+        document.open();
+        document.write(e.data.html);
+        document.close();
+      } catch (err) {
+        console.error('Error al actualizar preview', err);
+      }
+    }, false);
+
+    // Enviar evento de ready al padre si se necesita
+    window.parent && window.parent.postMessage({ type: 'previewReady' }, '*');
+  </script>
+</body>
+</html>

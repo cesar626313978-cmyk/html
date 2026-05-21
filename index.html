@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>HTML Learning Studio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>HTML Learning Studio</h1>
+    <nav class="top-nav">
+      <button id="open-exercise">Ejercicio 1</button>
+      <button id="saveCheckpoint">Guardar checkpoint</button>
+      <button id="loadCheckpoint">Cargar checkpoint</button>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <section class="editor-pane">
+      <div id="editor" class="editor"></div>
+      <div class="controls">
+        <button id="run">Actualizar preview</button>
+        <label><input type="checkbox" id="autoRefresh"> Auto refresh</label>
+      </div>
+    </section>
+
+    <section class="preview-pane">
+      <div class="preview-toolbar">
+        <span class="preview-label">Previsualización</span>
+        <select id="deviceSelect">
+          <option value="desktop">Escritorio</option>
+          <option value="tablet">Tablet</option>
+          <option value="mobile">Móvil</option>
+        </select>
+      </div>
+      <iframe id="preview" src="preview.html" sandbox="allow-scripts allow-same-origin"></iframe>
+      <div id="dom-inspector" class="dom-inspector">Inspector DOM</div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>HTML Learning Studio — entorno de práctica</small>
+  </footer>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.39.0/min/vs/loader.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
